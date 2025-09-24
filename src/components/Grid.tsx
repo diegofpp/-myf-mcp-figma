@@ -1,0 +1,50 @@
+import React from 'react'
+const imgImage = "http://localhost:3845/assets/6d80e0d405c086d3d65dd2fd2ba6856ebf6f588b.png";
+const imgImage1 = "http://localhost:3845/assets/24a2fbd3cb5648cd4f6686480c062db1d5cff2fe.png";
+const imgImage2 = "http://localhost:3845/assets/e144b5bf3e6dc12f946c18304b11f2c75f422429.png";
+const imgRoundedEdge = "http://localhost:3845/assets/a9263071dfc90232a311ff85a46723b01af13405.svg";
+const imgArrow = "http://localhost:3845/assets/616eeb88867bd458812dfa44d204fd6bc743a917.svg";
+
+function GridCard({
+  image,
+  label,
+}: {
+  image: string;
+  label: string;
+}) {
+  return (
+    <div className="relative w-full h-full rounded-[16px] overflow-hidden bg-black">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-70"
+        style={{ backgroundImage: `url('${image}')` }}
+      />
+      <div className="absolute right-0 bottom-0 bg-[#0a0b0a] rounded-tl-2xl pt-3 pl-6 pr-0">
+        <div className="absolute -left-6 bottom-0 size-6">
+          <img alt="" src={imgRoundedEdge} className="w-full h-full" />
+        </div>
+        <div className="absolute right-0 -top-6 size-6">
+          <img alt="" src={imgRoundedEdge} className="w-full h-full" />
+        </div>
+        <div className="flex items-center gap-3 pr-3 pb-0">
+          <span className="text-[#efe7d2] uppercase tracking-[1px] text-[16px]">{label}</span>
+          <div className="size-8 rounded-full bg-[rgba(24,24,24,0.5)] flex items-center justify-center relative">
+            <img alt="" src={imgArrow} className="size-4" />
+            <div aria-hidden className="absolute inset-0 rounded-full border border-[rgba(239,231,210,0.15)]" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Grid() {
+  return (
+    <div className="flex w-full flex-col gap-4 max-w-none lg:max-w-[420px] h-auto lg:h-full">
+      <div className="min-h-[28vh] lg:flex-1 lg:min-h-0"><GridCard image={imgImage} label="carta" /></div>
+      <div className="min-h-[28vh] lg:flex-1 lg:min-h-0"><GridCard image={imgImage1} label="reservas" /></div>
+      <div className="min-h-[28vh] lg:flex-1 lg:min-h-0"><GridCard image={imgImage2} label="nuestro Restaurant" /></div>
+    </div>
+  );
+}
+
+
