@@ -11,26 +11,26 @@ const menuSections = [
         name: 'Ceviche de Corvina',
         price: '$5',
         description: 'Deliciosa corvina marinada en limón de pica con cebolla morada, cilantro y ají amarillo.',
-        image: 'http://localhost:3845/assets/3940b31500c988344a01101f36a9b6a5361e55b3.png',
+        image: 'http://localhost:3845http://localhost:3845/assets/3940b31500c988344a01101f36a9b6a5361e55b3.png',
         hasLeaf: true
       },
       {
         name: 'Machas a la Parmesana',
         price: '$5',
         description: 'Machas frescas gratinadas con queso parmesano, mantequilla de ajo y perejil.',
-        image: 'http://localhost:3845/assets/3b26b652204bdad6e3d09d3a32b1bb8db457854f.png'
+        image: 'http://localhost:3845http://localhost:3845/assets/3b26b652204bdad6e3d09d3a32b1bb8db457854f.png'
       },
       {
         name: 'Ostiones al Pil Pil',
         price: '$5',
         description: 'Ostiones frescos salteados en aceite de oliva con ajo, merkén y perejil.',
-        image: 'http://localhost:3845/assets/2279ba2be00dc243debd6e046f1b6aafc1457391.png'
+        image: 'http://localhost:3845http://localhost:3845/assets/2279ba2be00dc243debd6e046f1b6aafc1457391.png'
       },
       {
         name: 'Empanadas de Mariscos',
         price: '$5',
         description: 'Empanadas horneadas rellenas con camarones, jaibas y queso, servidas con pebre.',
-        image: 'http://localhost:3845/assets/4168c2399769973d3d9b6d3b2d07bb31977cb3e4.png'
+        image: 'http://localhost:3845http://localhost:3845/assets/4168c2399769973d3d9b6d3b2d07bb31977cb3e4.png'
       }
     ]
   },
@@ -42,44 +42,44 @@ const menuSections = [
         name: 'Caldillo de Congrio',
         price: '$12',
         description: 'Tradicional caldillo chileno con congrio, papas, zanahoria, cebolla y vino blanco.',
-        image: 'http://localhost:3845/assets/9131bfbeb67dc508967d5682ca2602328cc9bd08.png',
+        image: 'http://localhost:3845http://localhost:3845/assets/9131bfbeb67dc508967d5682ca2602328cc9bd08.png',
         hasLeaf: true
       },
       {
         name: 'Chupe de Centolla',
         price: '$12',
         description: 'Cremoso chupe con centolla patagónica, queso, huevo y especias aromáticas.',
-        image: 'http://localhost:3845/assets/b7c946f395b655b1660960ba5dea68fb0862e5cc.png'
+        image: 'http://localhost:3845http://localhost:3845/assets/b7c946f395b655b1660960ba5dea68fb0862e5cc.png'
       },
       {
         name: 'Paila Marina',
         price: '$12',
         description: 'Variedad de mariscos frescos en caldo aromático con cilantro y ají verde.',
-        image: 'http://localhost:3845/assets/d4c8207f8d34cfabf8a1529e236e83ca463bf5ab.png'
+        image: 'http://localhost:3845http://localhost:3845/assets/d4c8207f8d34cfabf8a1529e236e83ca463bf5ab.png'
       },
       {
         name: 'Merluza a la Plancha',
         price: '$12',
         description: 'Filete de merluza austral a la plancha con mantequilla de limón y hierbas.',
-        image: 'http://localhost:3845/assets/6c20b9fd3e8d951a42625a5e8fc8cb401c12500b.png'
+        image: 'http://localhost:3845http://localhost:3845/assets/6c20b9fd3e8d951a42625a5e8fc8cb401c12500b.png'
       },
       {
         name: 'Pulpo al Olivo',
         price: '$12',
         description: 'Tierno pulpo cocido servido con salsa de palta y mayonesa casera.',
-        image: 'http://localhost:3845/assets/d30cf921dc082a79bf383236acfd69b518d05681.png'
+        image: 'http://localhost:3845http://localhost:3845/assets/d30cf921dc082a79bf383236acfd69b518d05681.png'
       },
       {
         name: 'Reineta a la Veracruzana',
         price: '$12',
         description: 'Reineta fresca con salsa de tomates, aceitunas, alcaparras y pimientos.',
-        image: 'http://localhost:3845/assets/85c7c05dbaff16e9831c461b315555281b6f566d.png'
+        image: 'http://localhost:3845http://localhost:3845/assets/85c7c05dbaff16e9831c461b315555281b6f566d.png'
       },
       {
         name: 'Salmón Ahumado',
         price: '$12',
         description: 'Salmón ahumado artesanal servido con alcaparras, cebolla y pan tostado.',
-        image: 'http://localhost:3845/assets/8aa55faa7fbe30075a3157543d59b1d995121bb3.png'
+        image: 'http://localhost:3845http://localhost:3845/assets/8aa55faa7fbe30075a3157543d59b1d995121bb3.png'
       }
     ]
   },
@@ -91,42 +91,42 @@ const menuSections = [
         name: 'Leche Asada Marina',
         price: '$16',
         description: 'Tradicional leche asada infusionada con agua de mar y caramelo de cochayuyo.',
-        image: 'http://localhost:3845/assets/32f4dd5ba64a9afabcd3c7f3ed0b0a33bf5d2b44.png',
+        image: 'http://localhost:3845http://localhost:3845/assets/32f4dd5ba64a9afabcd3c7f3ed0b0a33bf5d2b44.png',
         hasLeaf: true
       },
       {
         name: 'Torta de Lúcuma',
         price: '$16',
         description: 'Esponjosa torta de lúcuma con crema chantilly y dulce de leche.',
-        image: 'http://localhost:3845/assets/e2cc331b2c1f023cf5c814776c94843e9534b1d2.png',
+        image: 'http://localhost:3845http://localhost:3845/assets/e2cc331b2c1f023cf5c814776c94843e9534b1d2.png',
         hasLeaf: true
       },
       {
         name: 'Sopaipillas con Manjar',
         price: '$16',
         description: 'Sopaipillas caseras servidas calientes con manjar de leche y canela.',
-        image: 'http://localhost:3845/assets/ba4f3f39892ae09e105842517b61415d2a54a307.png',
+        image: 'http://localhost:3845http://localhost:3845/assets/ba4f3f39892ae09e105842517b61415d2a54a307.png',
         hasLeaf: true
       },
       {
         name: 'Chirimoya Alegre',
         price: '$16',
         description: 'Chirimoya fresca con crema de coco y trozos de frutos secos.',
-        image: 'http://localhost:3845/assets/a414a67391142ab72b6c30416afe28fe9428152c.png',
+        image: 'http://localhost:3845http://localhost:3845/assets/a414a67391142ab72b6c30416afe28fe9428152c.png',
         hasLeaf: true
       },
       {
         name: 'Calzones Rotos',
         price: '$16',
         description: 'Tradicionales calzones rotos espolvoreados con azúcar flor y miel de ulmo.',
-        image: 'http://localhost:3845/assets/b9512a74270df7c90d1930376c5ea35f245bf8c1.png',
+        image: 'http://localhost:3845http://localhost:3845/assets/b9512a74270df7c90d1930376c5ea35f245bf8c1.png',
         hasLeaf: true
       }
     ]
   }
 ];
 
-const imgVector = "http://localhost:3845/assets/f604f05016d0f59efd3ac3efcc4c316dc7bd4308.svg";
+const imgVector = "http://localhost:3845http://localhost:3845/assets/f604f05016d0f59efd3ac3efcc4c316dc7bd4308.svg";
 
 function PhLeafLight() {
   return (

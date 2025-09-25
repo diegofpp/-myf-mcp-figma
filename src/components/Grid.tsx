@@ -1,9 +1,9 @@
 import React from 'react'
-const imgImage = "http://localhost:3845/assets/6d80e0d405c086d3d65dd2fd2ba6856ebf6f588b.png";
-const imgImage1 = "http://localhost:3845/assets/24a2fbd3cb5648cd4f6686480c062db1d5cff2fe.png";
-const imgImage2 = "http://localhost:3845/assets/e144b5bf3e6dc12f946c18304b11f2c75f422429.png";
-const imgRoundedEdge = "http://localhost:3845/assets/a9263071dfc90232a311ff85a46723b01af13405.svg";
-const imgArrow = "http://localhost:3845/assets/616eeb88867bd458812dfa44d204fd6bc743a917.svg";
+const imgImage = "/assets/6d80e0d405c086d3d65dd2fd2ba6856ebf6f588b.png";
+const imgImage1 = "/assets/24a2fbd3cb5648cd4f6686480c062db1d5cff2fe.png";
+const imgImage2 = "/assets/e144b5bf3e6dc12f946c18304b11f2c75f422429.png";
+const imgRoundedEdge = "/assets/a9263071dfc90232a311ff85a46723b01af13405.svg";
+const imgArrow = "/assets/616eeb88867bd458812dfa44d204fd6bc743a917.svg";
 
 type GridProps = {
   onNavigateToMenu: () => void;

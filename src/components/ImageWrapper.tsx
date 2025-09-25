@@ -1,10 +1,10 @@
 import React from 'react';
-const imgFirefly202509202220271 = "http://localhost:3845/assets/c3c5384572fa3c5d7f9688a21a3da25a604cbec8.png";
-const img = "http://localhost:3845/assets/c15684d9f699e9cb7f13e344a73d68b7fecee5fb.svg";
-const imgRoundedEdge = "http://localhost:3845/assets/a9263071dfc90232a311ff85a46723b01af13405.svg";
-const img1 = "http://localhost:3845/assets/7abae9018c16c879a0ecf253f3801be4df871c5d.svg";
-const img2 = "http://localhost:3845/assets/76a19a654fd33b162308d8793e6be12be8b26273.svg";
-const img3 = "http://localhost:3845/assets/cdda679709040c2e11f4f60004ecd43395c397f0.svg";
+const imgFirefly202509202220271 = "/assets/c3c5384572fa3c5d7f9688a21a3da25a604cbec8.png";
+const img = "/assets/c15684d9f699e9cb7f13e344a73d68b7fecee5fb.svg";
+const imgRoundedEdge = "/assets/a9263071dfc90232a311ff85a46723b01af13405.svg";
+const img1 = "/assets/7abae9018c16c879a0ecf253f3801be4df871c5d.svg";
+const img2 = "/assets/76a19a654fd33b162308d8793e6be12be8b26273.svg";
+const img3 = "/assets/cdda679709040c2e11f4f60004ecd43395c397f0.svg";
 
 type ImageWrapperProps = {
   onNavigateToMenu: () => void;
