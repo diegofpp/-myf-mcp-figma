@@ -5,12 +5,18 @@ const imgImage2 = "http://localhost:3845/assets/e144b5bf3e6dc12f946c18304b11f2c7
 const imgRoundedEdge = "http://localhost:3845/assets/a9263071dfc90232a311ff85a46723b01af13405.svg";
 const imgArrow = "http://localhost:3845/assets/616eeb88867bd458812dfa44d204fd6bc743a917.svg";
 
+type GridProps = {
+  onNavigateToMenu: () => void;
+};
+
 function GridCard({
   image,
   label,
+  onNavigateToMenu,
 }: {
   image: string;
   label: string;
+  onNavigateToMenu: () => void;
 }) {
   return (
     <div className="relative w-full h-full rounded-[16px] overflow-hidden bg-black">
@@ -18,7 +24,10 @@ function GridCard({
         className="absolute inset-0 bg-cover bg-center opacity-70"
         style={{ backgroundImage: `url('${image}')` }}
       />
-      <div className="absolute right-0 bottom-0 bg-[#0a0b0a] rounded-tl-2xl pt-3 pl-6 pr-0">
+      <button 
+        onClick={onNavigateToMenu}
+        className="absolute right-0 bottom-0 bg-[#0a0b0a] rounded-tl-2xl pt-3 pl-6 pr-0 hover:bg-[rgba(10,11,10,0.8)] transition-colors"
+      >
         <div className="absolute -left-6 bottom-0 size-6">
           <img alt="" src={imgRoundedEdge} className="w-full h-full" />
         </div>
@@ -26,25 +35,29 @@ function GridCard({
           <img alt="" src={imgRoundedEdge} className="w-full h-full" />
         </div>
         <div className="flex items-center gap-3 pr-3 pb-0">
-          <span className="text-[#efe7d2] uppercase tracking-[1px] text-[16px]">{label}</span>
+          <span className="text-[#efe7d2] uppercase tracking-[1px] text-[16px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>{label}</span>
           <div className="size-8 rounded-full bg-[rgba(24,24,24,0.5)] flex items-center justify-center relative">
             <img alt="" src={imgArrow} className="size-4" />
             <div aria-hidden className="absolute inset-0 rounded-full border border-[rgba(239,231,210,0.15)]" />
           </div>
         </div>
+      </button>
+    </div>
+  );
+}
+
+export default function Grid({ onNavigateToMenu }: GridProps) {
+  return (
+    <div className="flex w-full flex-col tablet:flex-row desktop:flex-col gap-4 max-w-none desktop:max-w-[420px] h-auto desktop:h-full">
+      <div className="h-[250px] tablet:h-[200px] tablet:flex-1 desktop:h-auto desktop:flex-1 desktop:min-h-0">
+        <GridCard image={imgImage} label="carta" onNavigateToMenu={onNavigateToMenu} />
+      </div>
+      <div className="h-[250px] tablet:h-[200px] tablet:flex-1 desktop:h-auto desktop:flex-1 desktop:min-h-0">
+        <GridCard image={imgImage1} label="reservas" onNavigateToMenu={() => {}} />
+      </div>
+      <div className="h-[250px] tablet:h-[200px] tablet:flex-1 desktop:h-auto desktop:flex-1 desktop:min-h-0">
+        <GridCard image={imgImage2} label="nuestro Restaurant" onNavigateToMenu={() => {}} />
       </div>
     </div>
   );
 }
-
-export default function Grid() {
-  return (
-    <div className="flex w-full flex-col gap-4 max-w-none lg:max-w-[420px] h-auto lg:h-full">
-      <div className="min-h-[28vh] lg:flex-1 lg:min-h-0"><GridCard image={imgImage} label="carta" /></div>
-      <div className="min-h-[28vh] lg:flex-1 lg:min-h-0"><GridCard image={imgImage1} label="reservas" /></div>
-      <div className="min-h-[28vh] lg:flex-1 lg:min-h-0"><GridCard image={imgImage2} label="nuestro Restaurant" /></div>
-    </div>
-  );
-}
-
-
