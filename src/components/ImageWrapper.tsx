@@ -18,7 +18,7 @@ export default function ImageWrapper({ onNavigateToMenu }: ImageWrapperProps) {
         style={{ backgroundImage: `url('${imgFirefly202509202220271}')` }}
       />
 
-      <div className="absolute left-1/2 top-12 -translate-x-1/2 desktop:left-12 desktop:translate-x-0 flex items-center gap-3 bg-[#0a0b0a] p-2 rounded-xl max-w-[calc(100vw-24px)] mx-3">
+      <div className="absolute left-1/2 top-4 -translate-x-1/2 desktop:left-12 desktop:translate-x-0 flex items-center gap-3 bg-[#0a0b0a] p-2 rounded-xl max-w-[calc(100vw-24px)] ">
         <div className="size-[41px] rounded-lg bg-[rgba(24,24,24,0.5)] relative flex items-center justify-center">
           <div className="w-5 space-y-[5px]">
             <div className="h-px bg-[#efe7d2]" />
@@ -27,7 +27,7 @@ export default function ImageWrapper({ onNavigateToMenu }: ImageWrapperProps) {
           </div>
           <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
         </div>
-        <div className="h-4 w-[100px] mobile:w-[80px] relative">
+        <div className="h-4 w-[100px] mobile:w-[80px] mobile:h-[15px] relative">
           <img alt="" src={img} className="absolute inset-0 h-full w-full" />
         </div>
         <div className="flex items-center gap-1 mobile:gap-0.5">
