@@ -3,6 +3,11 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      screens: {
+        'mobile': '390px',
+        'tablet': '810px', 
+        'desktop': '1200px',
+      },
       colors: {
         background: {
           DEFAULT: '#0A0B0A',
@@ -16,5 +21,3 @@ export default {
   },
   plugins: [],
 }
-
-
