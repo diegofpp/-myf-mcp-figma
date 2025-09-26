@@ -140,17 +140,17 @@ function PhLeafLight() {
 
 function MenuItem({ item }: { item: any }) {
   return (
-    <div className="flex gap-6 items-center w-full">
-      <div className="bg-[#0a0b0a] h-[100px] overflow-hidden relative rounded-xl shrink-0 w-[150px]">
+    <div className="flex flex-col mobile:flex-row gap-4 mobile:gap-6 items-start mobile:items-center w-full">
+      <div className="bg-[#0a0b0a] h-[120px] mobile:h-[100px] w-full mobile:w-[150px] overflow-hidden relative rounded-xl shrink-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url('${item.image}')` }}
         />
       </div>
-      <div className="flex flex-col gap-1 grow">
+      <div className="flex flex-col gap-1 grow w-full mobile:w-auto">
         <div className="flex gap-4 items-end w-full">
           <div className="flex gap-3 items-center">
-            <h5 className="text-[#efe7d2] text-[22px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
+            <h5 className="text-[#efe7d2] text-[18px] mobile:text-[22px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
               {item.name}
             </h5>
             {item.hasLeaf && <PhLeafLight />}
@@ -158,11 +158,11 @@ function MenuItem({ item }: { item: any }) {
           <div className="flex-1 flex justify-end">
             <div className="h-px w-full border-t border-dashed border-[rgba(239,231,210,0.15)]" />
           </div>
-          <span className="text-[#efe7d2] text-[22px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
+          <span className="text-[#efe7d2] text-[18px] mobile:text-[22px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
             {item.price}
           </span>
         </div>
-        <p className="text-[rgba(245,242,234,0.7)] text-[14px] leading-[1.5]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
+        <p className="text-[rgba(245,242,234,0.7)] text-[13px] mobile:text-[14px] leading-[1.5]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
           {item.description}
         </p>
       </div>
