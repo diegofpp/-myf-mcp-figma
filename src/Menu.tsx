@@ -1,4 +1,3 @@
-import React from 'react';
 import ImageWrapper from './components/ImageWrapper';
 
 // Menu data con preparaciones del mar chilenas

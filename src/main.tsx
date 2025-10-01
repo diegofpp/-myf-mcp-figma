@@ -1,14 +1,14 @@
-import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { useState, useMemo } from 'react'
 import './styles.css'
 import Frontpage1 from './Frontpage1'
 import Menu from './Menu'
 
 function App() {
-  const [currentPage, setCurrentPage] = React.useState<'frontpage' | 'menu'>('frontpage');
+  const [currentPage, setCurrentPage] = useState<'frontpage' | 'menu'>('frontpage');
 
   // Context para pasar la función de navegación a los componentes
-  const navigationContext = React.useMemo(() => ({
+  const navigationContext = useMemo(() => ({
     navigateToMenu: () => setCurrentPage('menu'),
     navigateToFrontpage: () => setCurrentPage('frontpage')
   }), []);
@@ -23,7 +23,5 @@ function App() {
 }
 
 createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <App />
 )
