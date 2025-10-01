@@ -18,7 +18,7 @@ export default function ImageWrapper({ onNavigateToMenu }: ImageWrapperProps) {
         style={{ backgroundImage: `url('${imgFirefly202509202220271}')` }}
       />
 
-      <div className="hidden tablet:flex absolute left-1/2 top-4 -translate-x-1/2 desktop:left-12 desktop:translate-x-0 items-center gap-3 bg-[#0a0b0a] p-2 rounded-xl max-w-[calc(100vw-24px)] ">
+      <div className="flex absolute left-1/2 top-4 -translate-x-1/2 desktop:left-12 desktop:translate-x-0 items-center gap-3 bg-[#0a0b0a] p-2 rounded-xl max-w-[calc(100vw-24px)] ">
         <div className="size-[41px] rounded-lg bg-[rgba(24,24,24,0.5)] relative flex items-center justify-center">
           <div className="w-5 space-y-[5px]">
             <div className="h-px bg-[#efe7d2]" />
@@ -33,11 +33,11 @@ export default function ImageWrapper({ onNavigateToMenu }: ImageWrapperProps) {
         <div className="flex items-center gap-1 mobile:gap-0.5">
           <button 
             onClick={onNavigateToMenu}
-            className="hidden mobile:block px-2 mobile:px-1.5 py-2 rounded-lg hover:bg-[rgba(24,24,24,0.3)] transition-colors"
+            className="hidden tablet:block px-2 mobile:px-1.5 py-2 rounded-lg hover:bg-[rgba(24,24,24,0.3)] transition-colors"
           > 
             <span className="text-[#efe7d2] text-[12px] mobile:text-[10px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>carta</span>
           </button>
-          <div className="hidden mobile:block px-2 mobile:px-1.5 py-2 rounded-lg">
+          <div className="hidden tablet:block px-2 mobile:px-1.5 py-2 rounded-lg">
             <span className="text-[#efe7d2] text-[12px] mobile:text-[10px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>nosotros</span>
           </div>
           <div className="relative rounded-lg bg-[rgba(24,24,24,0.5)] px-2 mobile:px-1.5 py-2">
