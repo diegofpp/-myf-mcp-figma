@@ -27,7 +27,7 @@ export default function ImageWrapper({ onNavigateToMenu }: ImageWrapperProps) {
           </div>
           <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
         </div>
-        <div className="h-4 w-[100px] mobile:w-[80px] mobile:h-[15px] relative">
+        <div className="h-4 w-[105px] mobile:w-[110px] mobile:h-[17px] relative">
           <img alt="" src={img} className="absolute inset-0 h-full w-full" />
         </div>
         <div className="flex items-center gap-1 mobile:gap-0.5">
