@@ -4,9 +4,10 @@ interface NavbarProps {
   onNavigateToMenu?: () => void;
   variant?: 'main' | 'menu';
   className?: string;
+  sticky?: boolean;
 }
 
-export default function Navbar({ onNavigateToMenu, variant = 'main', className = '' }: NavbarProps) {
+export default function Navbar({ onNavigateToMenu, variant = 'main', className = '', sticky = false }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {
@@ -46,8 +47,12 @@ export default function Navbar({ onNavigateToMenu, variant = 'main', className =
     );
   }
 
+  const positionClasses = sticky 
+    ? 'sticky top-4 z-50 left-1/2 -translate-x-1/2 desktop:left-12 desktop:translate-x-0' 
+    : 'absolute left-1/2 top-4 -translate-x-1/2 desktop:left-12 desktop:translate-x-0';
+
   return (
-    <div className={`flex absolute left-1/2 top-4 -translate-x-1/2 desktop:left-12 desktop:translate-x-0 items-center gap-3 bg-[#0a0b0a] p-2 rounded-xl max-w-[calc(100vw-24px)] ${className}`}>
+    <div className={`flex ${positionClasses} items-center gap-3 bg-[#0a0b0a] p-2 rounded-xl max-w-[calc(100vw-24px)] ${className}`}>
       {/* Hamburger Menu */}
       <div className="size-[41px] rounded-lg bg-[rgba(24,24,24,0.5)] relative flex items-center justify-center">
         <button 

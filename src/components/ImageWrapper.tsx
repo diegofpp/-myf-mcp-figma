@@ -18,7 +18,7 @@ export default function ImageWrapper({ onNavigateToMenu }: ImageWrapperProps) {
         style={{ backgroundImage: `url('${imgFirefly202509202220271}')` }}
       />
 
-      <Navbar onNavigateToMenu={onNavigateToMenu} variant="main" />
+      <Navbar onNavigateToMenu={onNavigateToMenu} variant="main" sticky={true} />
 
       <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent to-black/90" />
 

@@ -249,7 +249,7 @@ export default function Menu({ onNavigateToFrontpage }: MenuProps) {
             
             {/* Navbar */}
             <div className="flex flex-col gap-8 items-start w-full mt-8">
-              <Navbar variant="menu" />
+              <Navbar variant="menu" sticky={true} />
             </div>
             
             {/* Menu Sections */}
