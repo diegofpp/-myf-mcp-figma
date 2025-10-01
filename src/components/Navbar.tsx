@@ -1,18 +1,43 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface NavbarProps {
   onNavigateToMenu?: () => void;
   variant?: 'main' | 'menu';
   className?: string;
-  sticky?: boolean;
 }
 
-export default function Navbar({ onNavigateToMenu, variant = 'main', className = '', sticky = false }: NavbarProps) {
+export default function Navbar({ onNavigateToMenu, variant = 'main', className = '' }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Detectar scroll y tamaño de pantalla
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 1200);
+    };
+
+    // Verificar tamaño inicial
+    handleResize();
+
+    // Agregar event listeners
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   if (variant === 'menu') {
     return (
@@ -47,12 +72,24 @@ export default function Navbar({ onNavigateToMenu, variant = 'main', className =
     );
   }
 
-  const positionClasses = sticky 
-    ? 'sticky top-4 z-50 left-1/2 -translate-x-1/2 desktop:left-12 desktop:translate-x-0' 
-    : 'absolute left-1/2 top-4 -translate-x-1/2 desktop:left-12 desktop:translate-x-0';
+  // Determinar clases de posición basadas en scroll y tamaño de pantalla
+  const getPositionClasses = () => {
+    if (variant === 'main' && isSmallScreen && isScrolled) {
+      return 'fixed top-4 left-1/2 -translate-x-1/2 z-50';
+    }
+    return 'absolute left-1/2 top-4 -translate-x-1/2 desktop:left-12 desktop:translate-x-0';
+  };
+
+  // Determinar clases de fondo basadas en scroll
+  const getBackgroundClasses = () => {
+    if (variant === 'main' && isSmallScreen && isScrolled) {
+      return 'bg-[#0a0b0a]/95 backdrop-blur-sm border border-[rgba(239,231,210,0.1)]';
+    }
+    return 'bg-[#0a0b0a]';
+  };
 
   return (
-    <div className={`flex ${positionClasses} items-center gap-3 bg-[#0a0b0a] p-2 rounded-xl max-w-[calc(100vw-24px)] ${className}`}>
+    <div className={`flex ${getPositionClasses()} items-center gap-3 ${getBackgroundClasses()} p-2 rounded-xl max-w-[calc(100vw-24px)] transition-all duration-300 ${className}`}>
       {/* Hamburger Menu */}
       <div className="size-[41px] rounded-lg bg-[rgba(24,24,24,0.5)] relative flex items-center justify-center">
         <button 
