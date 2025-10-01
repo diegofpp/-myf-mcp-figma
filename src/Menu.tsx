@@ -10,7 +10,7 @@ const menuSections = [
         name: 'Ceviche de Corvina',
         price: '$5',
         description: 'Deliciosa corvina marinada en limón de pica con cebolla morada, cilantro y ají amarillo.',
-        image: '/assets/3940b31500c988344a01101f36a9b6a5361e55b3.png',
+        image: '/assets/',
         hasLeaf: true
       },
       {
@@ -277,13 +277,6 @@ export default function Menu({ onNavigateToFrontpage }: MenuProps) {
           <div className="flex flex-col gap-4 items-start p-8 pb-20 rounded-2xl w-full relative">
             <div aria-hidden className="absolute inset-0 rounded-2xl border border-[rgba(239,231,210,0.15)]" />
             
-            {/* Back button */}
-            <button
-              onClick={onNavigateToFrontpage}
-              className="absolute top-4 left-4 px-3 py-2 rounded-lg bg-[rgba(24,24,24,0.5)] border border-[rgba(239,231,210,0.15)] hover:bg-[rgba(24,24,24,0.7)] transition-colors"
-            >
-              <span className="text-[#efe7d2] text-[12px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>← volver</span>
-            </button>
             
             {/* Navbar */}
             <div className="flex flex-col gap-8 items-start w-full mt-8">
