@@ -18,7 +18,7 @@ export default function ImageWrapper({ onNavigateToMenu }: ImageWrapperProps) {
         style={{ backgroundImage: `url('${imgFirefly202509202220271}')` }}
       />
 
-      <div className="flex absolute left-1/2 top-4 -translate-x-1/2 desktop:left-12 desktop:translate-x-0 items-center gap-3 bg-[#0a0b0a] p-2 rounded-xl max-w-[calc(100vw-24px)] ">
+      <div className="flex absolute left-1/2 top-4 -translate-x-1/2 desktop:left-12 desktop:translate-x-0 desktop:relative desktop:top-0 desktop:left-0 desktop:translate-x-0 items-center gap-3 bg-[#0a0b0a] p-2 rounded-xl max-w-[calc(100vw-24px)] desktop:max-w-none z-50">
         <div className="size-[41px] rounded-lg bg-[rgba(24,24,24,0.5)] relative flex items-center justify-center">
           <div className="w-5 space-y-[5px]">
             <div className="h-px bg-[#efe7d2]" />
