@@ -1,4 +1,5 @@
 import ImageWrapper from './components/ImageWrapper';
+import Navbar from './components/Navbar';
 
 // Menu data con preparaciones del mar chilenas
 const menuSections = [
@@ -10,7 +11,7 @@ const menuSections = [
         name: 'Ceviche de Corvina',
         price: '$5',
         description: 'Deliciosa corvina marinada en limón de pica con cebolla morada, cilantro y ají amarillo.',
-        image: '/assets/',
+        image: '/assets/mixparmesano.webp',
         hasLeaf: true
       },
       {
@@ -199,38 +200,6 @@ function SectionHeader({ title }: { title: string }) {
   );
 }
 
-function MenuNavbar() {
-  return (
-    <div className="flex gap-2 items-center justify-center p-2 rounded-xl w-full">
-      <div className="flex gap-1 items-center justify-center grow">
-        <div className="relative rounded-lg">
-          <div className="flex items-center justify-center px-3 py-2">
-            <span className="text-[#efe7d2] text-[12px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
-              entradas
-            </span>
-          </div>
-          <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
-        </div>
-        <div className="relative rounded-lg">
-          <div className="flex items-center justify-center px-3 py-2">
-            <span className="text-[#efe7d2] text-[12px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
-              fondos
-            </span>
-          </div>
-          <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
-        </div>
-        <div className="relative rounded-lg">
-          <div className="flex items-center justify-center px-3 py-2">
-            <span className="text-[#efe7d2] text-[12px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
-              postres
-            </span>
-          </div>
-          <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function Footer() {
   return (
@@ -280,9 +249,7 @@ export default function Menu({ onNavigateToFrontpage }: MenuProps) {
             
             {/* Navbar */}
             <div className="flex flex-col gap-8 items-start w-full mt-8">
-              <div className="flex gap-2 items-center justify-center p-2 rounded-xl w-full">
-                <MenuNavbar />
-              </div>
+              <Navbar variant="menu" />
             </div>
             
             {/* Menu Sections */}

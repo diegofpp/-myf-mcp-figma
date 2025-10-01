@@ -1,6 +1,6 @@
-import React from 'react';
+import Navbar from './Navbar';
+
 const imgFirefly202509202220271 = "/assets/c3c5384572fa3c5d7f9688a21a3da25a604cbec8.png";
-const img = "/assets/c15684d9f699e9cb7f13e344a73d68b7fecee5fb.svg";
 const imgRoundedEdge = "/assets/a9263071dfc90232a311ff85a46723b01af13405.svg";
 const img1 = "/assets/7abae9018c16c879a0ecf253f3801be4df871c5d.svg";
 const img2 = "/assets/76a19a654fd33b162308d8793e6be12be8b26273.svg";
@@ -18,34 +18,7 @@ export default function ImageWrapper({ onNavigateToMenu }: ImageWrapperProps) {
         style={{ backgroundImage: `url('${imgFirefly202509202220271}')` }}
       />
 
-      <div className="flex absolute left-1/2 top-4 -translate-x-1/2 desktop:left-12 desktop:translate-x-0 items-center gap-3 bg-[#0a0b0a] p-2 rounded-xl max-w-[calc(100vw-24px)] z-50 desktop:z-auto">
-        <div className="size-[41px] rounded-lg bg-[rgba(24,24,24,0.5)] relative flex items-center justify-center">
-          <div className="w-5 space-y-[5px]">
-            <div className="h-px bg-[#efe7d2]" />
-            <div className="h-px bg-[#efe7d2]" />
-            <div className="h-px bg-[#efe7d2]" />
-          </div>
-          <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
-        </div>
-        <div className="h-4 w-[105px] mobile:w-[110px] mobile:h-[17px] relative">
-          <img alt="" src={img} className="absolute inset-0 h-full w-full" />
-        </div>
-        <div className="flex items-center gap-1 mobile:gap-0.5">
-          <button 
-            onClick={onNavigateToMenu}
-            className="hidden tablet:block px-2 mobile:px-1.5 py-2 rounded-lg hover:bg-[rgba(24,24,24,0.3)] transition-colors"
-          > 
-            <span className="text-[#efe7d2] text-[12px] mobile:text-[10px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>carta</span>
-          </button>
-          <div className="hidden tablet:block px-2 mobile:px-1.5 py-2 rounded-lg">
-            <span className="text-[#efe7d2] text-[12px] mobile:text-[10px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>nosotros</span>
-          </div>
-          <div className="relative rounded-lg bg-[rgba(24,24,24,0.5)] px-2 mobile:px-1.5 py-2">
-            <span className="text-[#efe7d2] text-[12px] mobile:text-[10px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>reservar</span>
-            <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
-          </div>
-        </div>
-      </div>
+      <Navbar onNavigateToMenu={onNavigateToMenu} variant="main" />
 
       <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent to-black/90" />
 
