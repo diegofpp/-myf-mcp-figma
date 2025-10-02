@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 
 interface NavbarProps {
   onNavigateToMenu?: () => void;
+  onNavigateToReservation?: () => void;
   variant?: 'main' | 'menu';
   className?: string;
 }
 
-export default function Navbar({ onNavigateToMenu, variant = 'main', className = '' }: NavbarProps) {
+export default function Navbar({ onNavigateToMenu, onNavigateToReservation, variant = 'main', className = '' }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -119,10 +120,13 @@ export default function Navbar({ onNavigateToMenu, variant = 'main', className =
         <div className="hidden tablet:block px-2 mobile:px-1.5 py-2 rounded-lg">
           <span className="text-[#efe7d2] text-[12px] mobile:text-[10px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>nosotros</span>
         </div>
-        <div className="relative rounded-lg bg-[rgba(24,24,24,0.5)] px-2 mobile:px-1.5 py-2">
+        <button
+          onClick={onNavigateToReservation}
+          className="relative rounded-lg bg-[rgba(24,24,24,0.5)] px-2 mobile:px-1.5 py-2 hover:bg-[rgba(24,24,24,0.7)] transition-colors"
+        >
           <span className="text-[#efe7d2] text-[12px] mobile:text-[10px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>reservar</span>
           <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
-        </div>
+        </button>
       </div>
     </div>
   );

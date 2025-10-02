@@ -8,9 +8,10 @@ const img3 = "/assets/cdda679709040c2e11f4f60004ecd43395c397f0.svg";
 
 type ImageWrapperProps = {
   onNavigateToMenu: () => void;
+  onNavigateToReservation?: () => void;
 };
 
-export default function ImageWrapper({ onNavigateToMenu }: ImageWrapperProps) {
+export default function ImageWrapper({ onNavigateToMenu, onNavigateToReservation }: ImageWrapperProps) {
   return (
     <div className="relative grow min-w-[320px] desktop:min-w-[550px] rounded-[16px] overflow-hidden bg-black h-[70vh] desktop:h-full" data-name="Image Wrapper">
       <div
@@ -18,7 +19,7 @@ export default function ImageWrapper({ onNavigateToMenu }: ImageWrapperProps) {
         style={{ backgroundImage: `url('${imgFirefly202509202220271}')` }}
       />
 
-      <Navbar onNavigateToMenu={onNavigateToMenu} variant="main" />
+      <Navbar onNavigateToMenu={onNavigateToMenu} onNavigateToReservation={onNavigateToReservation} variant="main" />
 
       <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent to-black/90" />
 
