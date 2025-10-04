@@ -3,6 +3,12 @@ export default {
     tailwindcss: {},
     autoprefixer: {},
   },
+  // Optimización para hot reloading
+  map: {
+    inline: false,
+    annotation: true,
+    sourcesContent: true
+  }
 }
 
 

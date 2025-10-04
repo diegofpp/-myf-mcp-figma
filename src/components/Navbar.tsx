@@ -3,17 +3,29 @@ import { useState, useEffect } from 'react';
 interface NavbarProps {
   onNavigateToMenu?: () => void;
   onNavigateToReservation?: () => void;
+  onNavigateToAbout?: () => void;
+  onNavigateToFrontpage?: () => void;
+  onOpenMenuNav?: () => void;
   variant?: 'main' | 'menu';
   className?: string;
 }
 
-export default function Navbar({ onNavigateToMenu, onNavigateToReservation, variant = 'main', className = '' }: NavbarProps) {
+export default function Navbar({ onNavigateToMenu, onNavigateToReservation, onNavigateToAbout, onNavigateToFrontpage, onOpenMenuNav, variant = 'main', className = '' }: NavbarProps) {
+  console.log('Navbar props:', { onOpenMenuNav: !!onOpenMenuNav, variant });
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
+    console.log('Menu toggle clicked!', { onOpenMenuNav: !!onOpenMenuNav });
+    if (onOpenMenuNav) {
+      console.log('Calling onOpenMenuNav');
+      onOpenMenuNav();
+    } else {
+      console.log('Using local state');
+      setIsMenuOpen(!isMenuOpen);
+    }
   };
 
   // Detectar scroll y tamaño de pantalla
@@ -92,22 +104,30 @@ export default function Navbar({ onNavigateToMenu, onNavigateToReservation, vari
   return (
     <div className={`flex ${getPositionClasses()} items-center gap-3 ${getBackgroundClasses()} p-2 rounded-xl max-w-[calc(100vw-24px)] transition-all duration-300 ${className}`}>
       {/* Hamburger Menu */}
-      <div className="size-[41px] rounded-lg bg-[rgba(24,24,24,0.5)] relative flex items-center justify-center">
+      <div 
+        className="size-[41px] rounded-lg bg-[rgba(24,24,24,0.5)] relative flex items-center justify-center cursor-pointer"
+        onClick={handleMenuToggle}
+      >
         <button 
           onClick={handleMenuToggle}
-          className="w-5 space-y-[5px] flex flex-col items-center justify-center"
+          className="w-5 h-5 space-y-[5px] flex flex-col items-center justify-center cursor-pointer"
+          type="button"
         >
           <div className="h-px bg-[#efe7d2] w-full" />
           <div className="h-px bg-[#efe7d2] w-full" />
           <div className="h-px bg-[#efe7d2] w-full" />
         </button>
-        <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
+        <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)] pointer-events-none" />
       </div>
 
       {/* Logo */}
-      <div className="h-4 w-[105px] mobile:w-[110px] mobile:h-[17px] relative">
+      <button 
+        onClick={onNavigateToFrontpage}
+        className="h-4 w-[105px] mobile:w-[110px] mobile:h-[17px] relative cursor-pointer hover:opacity-80 transition-opacity"
+        aria-label="Ir al inicio"
+      >
         <img alt="Logo" src="/assets/c15684d9f699e9cb7f13e344a73d68b7fecee5fb.svg" className="absolute inset-0 h-full w-full" />
-      </div>
+      </button>
 
       {/* Navigation Items */}
       <div className="flex items-center gap-1 mobile:gap-0.5">
@@ -117,9 +137,12 @@ export default function Navbar({ onNavigateToMenu, onNavigateToReservation, vari
         > 
           <span className="text-[#efe7d2] text-[12px] mobile:text-[10px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>carta</span>
         </button>
-        <div className="hidden tablet:block px-2 mobile:px-1.5 py-2 rounded-lg">
+        <button 
+          onClick={onNavigateToAbout}
+          className="hidden tablet:block px-2 mobile:px-1.5 py-2 rounded-lg hover:bg-[rgba(24,24,24,0.3)] transition-colors"
+        >
           <span className="text-[#efe7d2] text-[12px] mobile:text-[10px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>nosotros</span>
-        </div>
+        </button>
         <button
           onClick={onNavigateToReservation}
           className="relative rounded-lg bg-[rgba(24,24,24,0.5)] px-2 mobile:px-1.5 py-2 hover:bg-[rgba(24,24,24,0.7)] transition-colors"

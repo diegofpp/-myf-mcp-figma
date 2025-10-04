@@ -8,6 +8,8 @@ const imgPatternBackground = "/assets/c2677b078baaec864ae18abdd8cdd2cbf2e15980.p
 interface ReservationProps {
   onNavigateToFrontpage: () => void;
   onNavigateToMenu: () => void;
+  onNavigateToAbout?: () => void;
+  onOpenMenuNav?: () => void;
 }
 
 function SectionHeader({ title }: { title: string }) {
@@ -65,7 +67,7 @@ function Footer() {
   );
 }
 
-export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }: ReservationProps) {
+export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu, onNavigateToAbout, onOpenMenuNav }: ReservationProps) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -81,8 +83,8 @@ export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }:
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Reservation form submitted:', formData);
-    // Aquí se podría agregar lógica para enviar los datos
+    console.log('Formulario de reserva enviado:', formData);
+    // Aquí se podría agregar lógica para enviar los datos al servidor
   };
 
   return (
@@ -99,13 +101,14 @@ export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }:
           {/* Gradient */}
           <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent to-black/90" />
 
-          {/* Title */}
-          <h1 className="absolute bottom-[280px] left-[56px] text-[#efe7d2] text-[80px] mobile:text-[60px] tracking-[2px] uppercase" style={{ fontFamily: 'Forum, sans-serif', fontWeight: 400 }}>
+          {/* Title 
+          <h1 className="absolute bottom-[100px] left-[56px] text-[#efe7d2] text-[80px] mobile:text-[60px] tracking-[2px] uppercase" style={{ fontFamily: 'Forum, sans-serif', fontWeight: 400 }}>
             reservar
           </h1>
+          */}
 
           {/* Navbar */}
-          <Navbar onNavigateToMenu={onNavigateToMenu} variant="main" />
+          <Navbar onNavigateToMenu={onNavigateToMenu} onNavigateToAbout={onNavigateToAbout} onNavigateToFrontpage={onNavigateToFrontpage} onOpenMenuNav={onOpenMenuNav} variant="main" />
         </div>
 
         {/* Reservation Form - Scrollable right side */}
@@ -122,10 +125,22 @@ export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }:
           <div className="flex flex-col gap-4 items-start p-8 pb-20 rounded-2xl w-full relative">
             <div aria-hidden className="absolute inset-0 rounded-2xl border border-[rgba(239,231,210,0.15)]" />
 
-            {/* Navbar for Menu */}
-            <div className="flex flex-col gap-8 items-start w-full mt-8">
-              <Navbar variant="menu" />
+            {/* Navbar for Reservation 
+            <div className="border border-green-500 flex flex-col gap-8 items-start w-full mt-8">
+              <div className="border border-white-500 flex gap-2 items-center justify-center p-2 rounded-xl w-full">
+                <div className="border border-white-500 flex gap-1 items-center justify-center grow">
+                  <div className="relative rounded-lg">
+                    <div className="flex items-center justify-center px-3 py-2">
+                      <span className="text-[#efe7d2] text-[12px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
+                        Reservar mesa
+                      </span>
+                    </div>
+                    <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
+                  </div>
+                </div>
+              </div>
             </div>
+            */}
 
             {/* Form Content */}
             <div className="flex flex-col gap-16 items-center w-full">
@@ -133,17 +148,17 @@ export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }:
               <div className="flex flex-col gap-4 items-center w-full">
                 <SectionHeader title="reservas" />
                 <p className="text-[#efe7d2] text-[18px] mobile:text-[16px] text-center leading-[1.5] max-w-[500px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 300 }}>
-                  Secure your spot at Qitchen, where exceptional sushi and a remarkable dining experience await.
+                  Asegura tu lugar en Qitchen, donde te espera un sushi excepcional y una experiencia gastronómica memorable.
                 </p>
               </div>
 
               {/* Reservation Form */}
               <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-start w-full max-w-[600px]">
-                {/* Name Input */}
+                {/* Campo de Nombre */}
                 <div className="bg-[rgba(24,24,24,0.5)] border border-[rgba(239,231,210,0.15)] rounded-[10px] w-full">
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder="Nombre"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     className="w-full px-6 py-4 bg-transparent text-[#efe7d2] text-[16px] placeholder-[#efe7d2] outline-none"
@@ -151,11 +166,11 @@ export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }:
                   />
                 </div>
 
-                {/* Phone Input */}
+                {/* Campo de Teléfono */}
                 <div className="bg-[rgba(24,24,24,0.5)] border border-[rgba(239,231,210,0.15)] rounded-[10px] w-full">
                   <input
                     type="tel"
-                    placeholder="Phone Number"
+                    placeholder="Teléfono"
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
                     className="w-full px-6 py-4 bg-transparent text-[#efe7d2] text-[16px] placeholder-[#efe7d2] outline-none"
@@ -163,11 +178,11 @@ export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }:
                   />
                 </div>
 
-                {/* Email Input */}
+                {/* Campo de Email */}
                 <div className="bg-[rgba(24,24,24,0.5)] border border-[rgba(239,231,210,0.15)] rounded-[10px] w-full">
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder="Correo electrónico"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     className="w-full px-6 py-4 bg-transparent text-[#efe7d2] text-[16px] placeholder-[#efe7d2] outline-none"
@@ -177,11 +192,11 @@ export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }:
 
                 {/* Three Column Row */}
                 <div className="flex flex-col mobile:flex-row gap-4 w-full">
-                  {/* Guests */}
+                  {/* Comensales */}
                   <div className="bg-[rgba(24,24,24,0.5)] border border-[rgba(239,231,210,0.15)] rounded-[10px] flex-1">
                     <input
                       type="number"
-                      placeholder="Guests"
+                      placeholder="Comensales"
                       min="1"
                       value={formData.guests}
                       onChange={(e) => handleInputChange('guests', e.target.value)}
@@ -190,7 +205,7 @@ export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }:
                     />
                   </div>
 
-                  {/* Date */}
+                  {/* Fecha */}
                   <div className="bg-[rgba(24,24,24,0.5)] border border-[rgba(239,231,210,0.15)] rounded-[10px] flex-1">
                     <input
                       type="date"
@@ -201,7 +216,7 @@ export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }:
                     />
                   </div>
 
-                  {/* Time */}
+                  {/* Hora */}
                   <div className="bg-[rgba(24,24,24,0.5)] border border-[rgba(239,231,210,0.15)] rounded-[10px] flex-1">
                     <input
                       type="time"
@@ -213,13 +228,13 @@ export default function Reservation({ onNavigateToFrontpage, onNavigateToMenu }:
                   </div>
                 </div>
 
-                {/* Submit Button */}
+                {/* Botón de Envío */}
                 <button
                   type="submit"
                   className="w-full bg-[#efe7d2] text-[#0a0b0a] px-6 py-4 rounded-[8px] hover:bg-[#efe7d2]/90 transition-colors"
                 >
                   <span className="text-[12px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>
-                    Reserve
+                    Reservar
                   </span>
                 </button>
               </form>

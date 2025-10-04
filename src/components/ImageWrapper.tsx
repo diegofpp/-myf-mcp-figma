@@ -9,9 +9,12 @@ const img3 = "/assets/cdda679709040c2e11f4f60004ecd43395c397f0.svg";
 type ImageWrapperProps = {
   onNavigateToMenu: () => void;
   onNavigateToReservation?: () => void;
+  onNavigateToAbout?: () => void;
+  onNavigateToFrontpage?: () => void;
+  onOpenMenuNav?: () => void;
 };
 
-export default function ImageWrapper({ onNavigateToMenu, onNavigateToReservation }: ImageWrapperProps) {
+export default function ImageWrapper({ onNavigateToMenu, onNavigateToReservation, onNavigateToAbout, onNavigateToFrontpage, onOpenMenuNav }: ImageWrapperProps) {
   return (
     <div className="relative grow min-w-[320px] desktop:min-w-[550px] rounded-[16px] overflow-hidden bg-black h-[70vh] desktop:h-full" data-name="Image Wrapper">
       <div
@@ -19,7 +22,7 @@ export default function ImageWrapper({ onNavigateToMenu, onNavigateToReservation
         style={{ backgroundImage: `url('${imgFirefly202509202220271}')` }}
       />
 
-      <Navbar onNavigateToMenu={onNavigateToMenu} onNavigateToReservation={onNavigateToReservation} variant="main" />
+      <Navbar onNavigateToMenu={onNavigateToMenu} onNavigateToReservation={onNavigateToReservation} onNavigateToAbout={onNavigateToAbout} onNavigateToFrontpage={onNavigateToFrontpage} onOpenMenuNav={onOpenMenuNav} variant="main" />
 
       <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent to-black/90" />
 
