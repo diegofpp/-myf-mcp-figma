@@ -26,7 +26,7 @@ function GridCard({
       />
       <button 
         onClick={onNavigateToMenu}
-        className="absolute right-0 bottom-0 bg-[#0a0b0a] rounded-tl-2xl pt-3 pl-6 pr-0 hover:bg-[rgba(10,11,10,0.8)] transition-colors"
+        className="absolute right-0 bottom-0 bg-[#0a0b0a] rounded-tl-2xl pt-3 pl-6 pr-0"
       >
         <div className="absolute -left-6 bottom-0 size-6">
           <img alt="" src={imgRoundedEdge} className="w-full h-full" />
@@ -35,7 +35,7 @@ function GridCard({
           <img alt="" src={imgRoundedEdge} className="w-full h-full" />
         </div>
         <div className="flex items-center gap-3 pr-3 pb-0">
-          <span className="text-[#efe7d2] uppercase tracking-[1px] text-[16px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>{label}</span>
+          <span className="rotating-text text-[#efe7d2] uppercase tracking-[1px] text-[16px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>{label}</span>
           <div className="size-8 rounded-full bg-[rgba(24,24,24,0.5)] flex items-center justify-center relative">
             <img alt="" src={imgArrow} className="size-4" />
             <div aria-hidden className="absolute inset-0 rounded-full border border-[rgba(239,231,210,0.15)]" />

@@ -8,7 +8,7 @@ const img3 = "/assets/cdda679709040c2e11f4f60004ecd43395c397f0.svg";
 
 type ImageWrapperProps = {
   onNavigateToMenu: () => void;
-  onNavigateToReservation?: () => void;
+  onNavigateToReservation: () => void;
   onNavigateToAbout?: () => void;
   onNavigateToFrontpage?: () => void;
   onOpenMenuNav?: () => void;

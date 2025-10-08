@@ -31,7 +31,7 @@ export default function MenuNav({
 
       <div className="bg-[#0a0b0a] border border-[rgba(239,231,210,0.15)] border-solid h-full rounded-[16px] shrink-0 w-full" />
       
-      <div className="absolute content-stretch flex flex-col gap-[16px] items-center top-1/2 translate-x-[-50%] translate-y-[-50%]" data-name="Menu" style={{ left: "calc(50% + 0.5px)" }}>
+      <div className=" absolute content-stretch flex flex-col gap-[16px] items-center top-1/2 translate-x-[-50%] translate-y-[-50%]" data-name="Menu" style={{ left: "calc(50% + 0.5px)" }}>
         {/* Top decorative element */}
         <div className="box-border content-stretch flex items-center justify-center px-0 py-[7px] relative shrink-0" data-name="Grid">
           <div className="flex h-[0px] items-center justify-center relative shrink-0 w-[0px]">

@@ -231,16 +231,17 @@ function Footer() {
 type MenuProps = {
   onNavigateToFrontpage: () => void;
   onNavigateToAbout?: () => void;
+  onNavigateToReservation?: () => void;
   onOpenMenuNav?: () => void;
 };
 
-export default function Menu({ onNavigateToFrontpage, onNavigateToAbout, onOpenMenuNav }: MenuProps) {
+export default function Menu({ onNavigateToFrontpage, onNavigateToAbout, onNavigateToReservation, onOpenMenuNav }: MenuProps) {
   return (
     <div className="min-h-screen desktop:h-screen w-full bg-[#0a0b0a] p-6 overflow-auto desktop:overflow-hidden">
       <div className="flex w-full h-auto desktop:h-full gap-4 rounded-tr-[48px] rounded-br-[48px] flex-col desktop:flex-row">
         {/* Image Wrapper - Fixed left side */}
         <div className="relative grow min-w-[320px] desktop:min-w-[550px] rounded-[16px] overflow-hidden bg-black h-[70vh] desktop:h-full">
-          <ImageWrapper onNavigateToMenu={() => {}} onNavigateToAbout={onNavigateToAbout} onNavigateToFrontpage={onNavigateToFrontpage} onOpenMenuNav={onOpenMenuNav} />
+          <ImageWrapper onNavigateToMenu={() => {}} onNavigateToReservation={onNavigateToReservation} onNavigateToAbout={onNavigateToAbout} onNavigateToFrontpage={onNavigateToFrontpage} onOpenMenuNav={onOpenMenuNav} />
         </div>
         
         {/* Menu Grid - Scrollable right side */}
@@ -250,8 +251,8 @@ export default function Menu({ onNavigateToFrontpage, onNavigateToAbout, onOpenM
             
             
             {/* Navbar */}
-            <div className="flex flex-col gap-8 items-start w-full mt-8">
-              <Navbar variant="menu" onNavigateToFrontpage={onNavigateToFrontpage} />
+            <div className="flex flex-col gap-8 items-start w-full -mt-4">
+              <Navbar variant="menu" onNavigateToFrontpage={onNavigateToFrontpage} onNavigateToReservation={onNavigateToReservation} />
             </div>
             
             {/* Menu Sections */}

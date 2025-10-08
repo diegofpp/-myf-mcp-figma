@@ -13,6 +13,7 @@ interface AboutProps {
   onNavigateToFrontpage: () => void;
   onNavigateToMenu: () => void;
   onNavigateToAbout?: () => void;
+  onNavigateToReservation?: () => void;
   onOpenMenuNav?: () => void;
 }
 
@@ -97,7 +98,7 @@ function RatingCard({ title, subtitle }: { title: string; subtitle: string }) {
   );
 }
 
-export default function About({ onNavigateToFrontpage, onNavigateToMenu, onNavigateToAbout, onOpenMenuNav }: AboutProps) {
+export default function About({ onNavigateToFrontpage, onNavigateToMenu, onNavigateToAbout, onNavigateToReservation, onOpenMenuNav }: AboutProps) {
   return (
     <div className="min-h-screen desktop:h-screen w-full bg-[#0a0b0a] p-6 overflow-auto desktop:overflow-hidden">
       {/* Pattern Background */}
@@ -127,7 +128,7 @@ export default function About({ onNavigateToFrontpage, onNavigateToMenu, onNavig
           </h1>
 
           {/* Navbar */}
-          <Navbar onNavigateToMenu={onNavigateToMenu} onNavigateToFrontpage={onNavigateToFrontpage} onOpenMenuNav={onOpenMenuNav} variant="main" />
+          <Navbar onNavigateToMenu={onNavigateToMenu} onNavigateToFrontpage={onNavigateToFrontpage} onNavigateToReservation={onNavigateToReservation} onOpenMenuNav={onOpenMenuNav} variant="main" />
         </div>
 
         {/* Content Wrapper - Scrollable right side */}
