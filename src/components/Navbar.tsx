@@ -109,7 +109,7 @@ export default function Navbar({ onNavigateToMenu, onNavigateToReservation, onNa
   };
 
   return (
-    <div className={`border border-blue-500 flex ${getPositionClasses()} items-center gap-3 ${getBackgroundClasses()} p-2 rounded-xl max-w-[calc(100vw-24px)] transition-all duration-300 ${className}`}>
+    <div className={`flex ${getPositionClasses()} items-center gap-3 ${getBackgroundClasses()} p-2 rounded-xl max-w-[calc(100vw-24px)] transition-all duration-300 ${className}`}>
       {/* Hamburger Menu */}
       <div 
         className="size-[41px] rounded-lg bg-[rgba(24,24,24,0.5)] relative flex items-center justify-center cursor-pointer"

@@ -48,3 +48,64 @@ export const opacity = {
     opacity: 1
   }
 }
+
+// Animaciones para MenuNav
+export const menuNavOverlay = {
+  initial: {
+    opacity: 0
+  },
+  enter: {
+    opacity: 1
+  },
+  exit: {
+    opacity: 0
+  }
+}
+
+export const menuNavContent = {
+  initial: {
+    scale: 0.8,
+    opacity: 0,
+    y: 20
+  },
+  enter: {
+    scale: 1,
+    opacity: 1,
+    y: 0
+  },
+  exit: {
+    scale: 0.8,
+    opacity: 0,
+    y: 20
+  }
+}
+
+export const menuNavItems = {
+  initial: {
+    opacity: 0,
+    y: 30
+  },
+  enter: {
+    opacity: 1,
+    y: 0
+  },
+  exit: {
+    opacity: 0,
+    y: 30
+  }
+}
+
+export const menuNavItem = {
+  initial: {
+    opacity: 0,
+    y: 20
+  },
+  enter: {
+    opacity: 1,
+    y: 0
+  },
+  exit: {
+    opacity: 0,
+    y: 20
+  }
+}
