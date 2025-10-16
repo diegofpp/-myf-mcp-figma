@@ -31,7 +31,7 @@ export default function MenuNav({
     <AnimatePresence>
       {isOpen && (
         <motion.div 
-          className="fixed inset-0 z-50 bg-[#0a0b0a]" 
+          className="fixed inset-0 z-50 bg-[#0a0b0a] pointer-events-auto" 
           data-name="Menu Nav"
           initial="initial"
           animate="enter"
