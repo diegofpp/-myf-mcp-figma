@@ -16,7 +16,7 @@ type ImageWrapperProps = {
 
 export default function ImageWrapper({ onNavigateToMenu, onNavigateToReservation, onNavigateToAbout, onNavigateToFrontpage, onOpenMenuNav }: ImageWrapperProps) {
   return (
-    <div className="relative grow min-w-[320px] desktop:min-w-[550px] rounded-[16px] overflow-hidden bg-black h-[70vh] desktop:h-full" data-name="Image Wrapper">
+    <div className="p-10 border border-red-500 relative grow min-w-[320px] desktop:min-w-[550px] rounded-[16px] overflow-hidden bg-black h-[70vh] desktop:h-full" data-name="Image Wrapper">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url('${imgFirefly202509202220271}')` }}

@@ -1,5 +1,6 @@
 import ImageWrapper from './components/ImageWrapper';
 import Navbar from './components/Navbar';
+import MainWrapper from './components/MainWrapper';
 
 // Menu data con preparaciones del mar chilenas
 const menuSections = [
@@ -206,7 +207,7 @@ function Footer() {
     <div className="flex items-center justify-between px-6 py-5 relative rounded-2xl w-full">
       <div aria-hidden className="absolute inset-0 rounded-2xl border border-[rgba(239,231,210,0.15)]" />
       <div className="flex gap-4 items-center">
-        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>By Pawel Gola</span>
+        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>Mar y Fuego</span>
         <div className="flex items-center justify-center">
           <div className="flex-none rotate-[315deg]">
             <div className="relative size-2">
@@ -214,7 +215,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>Licensing</span>
+        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>Restaurante</span>
         <div className="flex items-center justify-center">
           <div className="flex-none rotate-[315deg]">
             <div className="relative size-2">
@@ -222,7 +223,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>Styleguide</span>
+        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>2025</span>
       </div>
     </div>
   );
@@ -237,8 +238,8 @@ type MenuProps = {
 
 export default function Menu({ onNavigateToFrontpage, onNavigateToAbout, onNavigateToReservation, onOpenMenuNav }: MenuProps) {
   return (
-    <div className="min-h-screen desktop:h-screen w-full bg-[#0a0b0a] p-6 overflow-auto desktop:overflow-hidden">
-      <div className="flex w-full h-auto desktop:h-full gap-4 rounded-tr-[48px] rounded-br-[48px] flex-col desktop:flex-row">
+    <div className="min-h-screen desktop:h-screen w-full bg-[#0a0b0a] p-3 overflow-auto desktop:overflow-hidden">
+      <MainWrapper>
         {/* Image Wrapper - Fixed left side */}
         <div className="relative grow min-w-[320px] desktop:min-w-[550px] rounded-[16px] overflow-hidden bg-black h-[70vh] desktop:h-full">
           <ImageWrapper 
@@ -281,7 +282,7 @@ export default function Menu({ onNavigateToFrontpage, onNavigateToAbout, onNavig
             <Footer />
           </div>
         </div>
-      </div>
+      </MainWrapper>
     </div>
   );
 }

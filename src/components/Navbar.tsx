@@ -81,13 +81,13 @@ export default function Navbar({ onNavigateToMenu, onNavigateToReservation, onNa
             <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)]" />
           </div>
         </div>
-        <button
+     {/*<button
           onClick={onNavigateToReservation}
           className="relative rounded-lg bg-[rgba(24,24,24,0.5)] px-3 py-2 hover:bg-[rgba(24,24,24,0.7)] transition-colors"
         >
-          <span className="rotating-text text-[#efe7d2] text-[12px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>reservar</span>
+          <span className="rotating-text text-[#efe7d2] text-[12px] tracking-[1px] uppercase" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}>reserva</span>
           <div aria-hidden className="absolute inset-0 rounded-lg border border-[rgba(239,231,210,0.15)] pointer-events-none" />
-        </button>
+        </button> */}
       </div>
     );
   }

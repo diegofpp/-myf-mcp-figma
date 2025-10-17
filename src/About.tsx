@@ -62,11 +62,11 @@ function Footer() {
     <div className="flex items-center justify-between px-6 py-5 relative rounded-2xl w-full">
       <div aria-hidden className="absolute inset-0 rounded-2xl border border-[rgba(239,231,210,0.15)]" />
       <div className="flex gap-4 items-center">
-        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 300 }}>By Pawel Gola</span>
+        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 300 }}>Mar y Fuego</span>
         {separatorIcon()}
-        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 300 }}>Licensing</span>
+        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 300 }}>Restaurante</span>
         {separatorIcon()}
-        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 300 }}>Styleguide</span>
+        <span className="text-[#efe7d2] text-[14px]" style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 300 }}>2025</span>
       </div>
     </div>
   );
