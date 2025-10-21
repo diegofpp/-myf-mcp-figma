@@ -9,6 +9,34 @@ const menuSections = [
     title: 'ENTRADAS',
     items: [
       {
+        name: 'Pescado Frito',
+        price: '$5',
+        description: 'Delicioso mix de salmon y reineta fresca marinados en limón de pica con cebolla morada, cilantro y ají amarillo.',
+        image: '/assets/pescadofrito.png',
+        hasLeaf: true
+      },
+      {
+        name: 'Lomo Salsa',
+        price: '$5',
+        description: 'Delicioso mix de salmon y reineta fresca marinados en limón de pica con cebolla morada, cilantro y ají amarillo.',
+        image: '/assets/lomosalsa.png',
+        hasLeaf: true
+      },
+      {
+        name: 'Ceviche Mixto',
+        price: '$5',
+        description: 'Delicioso mix de salmon y reineta fresca marinados en limón de pica con cebolla morada, cilantro y ají amarillo.',
+        image: '/assets/ceviche-mixto.png',
+        hasLeaf: true
+      },
+      {
+        name: 'Mariscal Caliente',
+        price: '$5',
+        description: 'Caldo marinero con una sabrosa mezcla de mariscos frescos, servido bien caliente al estilo chileno.',
+        image: '/assets/mariscal.png',
+        hasLeaf: true
+      },
+      {
         name: 'Ceviche de Corvina',
         price: '$5',
         description: 'Deliciosa corvina marinada en limón de pica con cebolla morada, cilantro y ají amarillo.',
