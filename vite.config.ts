@@ -17,5 +17,27 @@ export default defineConfig({
   },
   css: {
     devSourcemap: true
-  }
+  },
+  build: {
+    // Optimización de assets
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js'
+      }
+    },
+    // Compresión de assets
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    },
+    // Chunk size warning limit
+    chunkSizeWarningLimit: 1000
+  },
+  // Optimización de imágenes
+  assetsInclude: ['**/*.webp', '**/*.avif']
 })

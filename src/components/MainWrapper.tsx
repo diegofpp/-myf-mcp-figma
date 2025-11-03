@@ -9,7 +9,7 @@ export default function MainWrapper({ children }: MainWrapperProps) {
   return (
     <div
       data-name="Main Wrapper"
-      className="border border-blue-500 flex w-full h-auto desktop:h-full gap-4 rounded-tr-[48px] rounded-br-[48px] flex-col desktop:flex-row"
+      className="flex w-full h-auto desktop:h-full gap-4 rounded-tr-[48px] rounded-br-[48px] flex-col desktop:flex-row"
     >
       {children}
     </div>

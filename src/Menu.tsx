@@ -1,6 +1,7 @@
 import ImageWrapper from './components/ImageWrapper';
 import Navbar from './components/Navbar';
 import MainWrapper from './components/MainWrapper';
+import LazyImage from './components/LazyImage';
 
 // Menu data con preparaciones del mar chilenas
 const menuSections = [
@@ -8,6 +9,27 @@ const menuSections = [
     id: 'entradas',
     title: 'ENTRADAS',
     items: [
+      {
+        name: 'Pescado frito con Papas Mayo',
+        price: '$5',
+        description: 'Delicioso mix de salmon y reineta fresca marinados en limón de pica con cebolla morada, cilantro y ají amarillo.',
+        image: '/assets/pescadofritopapamayo.png',
+        hasLeaf: true
+      },
+      {
+        name: 'Merluza a lo Pobre',
+        price: '$5',
+        description: 'Delicioso mix de salmon y reineta fresca marinados en limón de pica con cebolla morada, cilantro y ají amarillo.',
+        image: '/assets/pescadopobre.png',
+        hasLeaf: true
+      },
+      {
+        name: 'Locos de la Casa',
+        price: '$5',
+        description: 'Delicioso mix de salmon y reineta fresca marinados en limón de pica con cebolla morada, cilantro y ají amarillo.',
+        image: '/assets/locoscasa.png',
+        hasLeaf: true
+      },
       {
         name: 'Pescado Frito',
         price: '$5',
@@ -171,9 +193,12 @@ function MenuItem({ item }: { item: any }) {
   return (
     <div className="flex flex-col mobile:flex-row gap-4 mobile:gap-6 items-start mobile:items-center w-full">
       <div className="bg-[#0a0b0a] h-[120px] mobile:h-[100px] w-full mobile:w-[150px] overflow-hidden relative rounded-xl shrink-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${item.image}')` }}
+        {/* Imagen optimizada con lazy loading */}
+        <LazyImage
+          src={item.image}
+          alt={item.name}
+          className="w-full h-full"
+          sizes="(max-width: 768px) 100vw, 150px"
         />
       </div>
       <div className="flex flex-col gap-1 grow w-full mobile:w-auto">
