@@ -86,8 +86,8 @@ function App() {
 
   return (
     <div className="main">
-      {/* Componente de prueba de Meta Pixel */}
-      <PixelTestComponent />
+      {/* Componente de prueba de Meta Pixel - Oculto */}
+      {/* <PixelTestComponent /> */}
       
       {/* MenuNav Overlay */}
       <MenuNav 
