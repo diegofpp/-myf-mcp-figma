@@ -42,3 +42,6 @@ coverage/
 # Temporary folders
 tmp/
 temp/
+
+# Image optimization tracking
+.processed_images
