@@ -2,7 +2,6 @@ import ImageWrapper from './components/ImageWrapper';
 import Navbar from './components/Navbar';
 import MainWrapper from './components/MainWrapper';
 import LazyImage from './components/LazyImage';
-import { exportToPDF } from './utils/pdfExport';
 
 // Menu data con preparaciones del mar chilenas
 const menuSections = [
@@ -291,15 +290,6 @@ type MenuProps = {
 };
 
 export default function Menu({ onNavigateToFrontpage, onNavigateToAbout, onNavigateToReservation, onOpenMenuNav }: MenuProps) {
-  const handleExportPDF = () => {
-    exportToPDF('menu-content', 'menu-mar-y-fuego', {
-      format: [210, 297], // A4
-      orientation: 'portrait',
-      scale: 2,
-      quality: 1.0,
-    });
-  };
-
   return (
     <div className="min-h-screen desktop:h-screen w-full bg-[#0a0b0a] p-3 overflow-auto desktop:overflow-hidden">
       <MainWrapper>
@@ -322,17 +312,7 @@ export default function Menu({ onNavigateToFrontpage, onNavigateToAbout, onNavig
             
             {/* Navbar */}
             <div className="flex flex-col gap-8 items-start w-full -mt-4">
-              <div className="flex items-center justify-between w-full">
-                <Navbar variant="menu" onNavigateToFrontpage={onNavigateToFrontpage} onNavigateToReservation={onNavigateToReservation} />
-                {/* Botón para exportar a PDF */}
-                <button
-                  onClick={handleExportPDF}
-                  className="px-4 py-2 bg-[rgba(239,231,210,0.1)] hover:bg-[rgba(239,231,210,0.2)] border border-[rgba(239,231,210,0.15)] rounded-lg transition-colors"
-                  style={{ fontFamily: 'Satoshi, sans-serif', fontWeight: 400 }}
-                >
-                  <span className="text-[#efe7d2] text-[14px] uppercase tracking-[1px]">Exportar PDF</span>
-                </button>
-              </div>
+              <Navbar variant="menu" onNavigateToFrontpage={onNavigateToFrontpage} onNavigateToReservation={onNavigateToReservation} />
             </div>
             
             {/* Menu Sections */}

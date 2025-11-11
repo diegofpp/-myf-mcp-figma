@@ -11,6 +11,7 @@ import PixelTestComponent from './components/PixelTestComponent'
 import Inner from './components/Inner'
 import { MetaPixel } from './utils/metaPixel'
 import { PIXEL_EVENTS } from './config/pixel'
+import { exportMenuPDF } from './utils/pdfExport'
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'frontpage' | 'menu' | 'reservation' | 'about'>('frontpage');
@@ -31,6 +32,14 @@ function App() {
       
     } catch (error) {
       console.error('❌ Error inicializando Meta Pixel:', error);
+    }
+  }, []);
+
+  // Exponer función de exportación a PDF globalmente (solo para uso interno)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as any).exportMenuPDF = exportMenuPDF;
+      console.log('📄 Función exportMenuPDF disponible. Usa: window.exportMenuPDF()');
     }
   }, []);
 
@@ -86,8 +95,8 @@ function App() {
 
   return (
     <div className="main">
-      {/* Componente de prueba de Meta Pixel - Oculto */}
-      {/* <PixelTestComponent /> */}
+      {/* Componente de prueba de Meta Pixel */}
+      <PixelTestComponent />
       
       {/* MenuNav Overlay */}
       <MenuNav 

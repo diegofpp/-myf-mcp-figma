@@ -2,7 +2,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
 /**
- * Exporta un elemento HTML a PDF
+ * Exporta un elemento HTML a PDF (función interna)
  * @param elementId - ID del elemento a exportar
  * @param filename - Nombre del archivo PDF (sin extensión)
  * @param options - Opciones adicionales para la exportación
@@ -25,26 +25,11 @@ export async function exportToPDF(
   }
 
   try {
-    // Mostrar indicador de carga
-    const loadingMessage = document.createElement('div');
-    loadingMessage.style.cssText = `
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 20px 40px;
-      border-radius: 8px;
-      z-index: 10000;
-      font-family: sans-serif;
-    `;
-    loadingMessage.textContent = 'Generando PDF...';
-    document.body.appendChild(loadingMessage);
-
+    console.log('🔄 Generando PDF...');
+    
     // Configuración de html2canvas
     const canvas = await html2canvas(element, {
-      scale: options.scale || 2, // Mayor calidad
+      scale: options.scale || 2,
       useCORS: true,
       logging: false,
       backgroundColor: '#ffffff',
@@ -91,14 +76,103 @@ export async function exportToPDF(
 
     // Guardar PDF
     pdf.save(`${filename}.pdf`);
-
-    // Remover indicador de carga
-    document.body.removeChild(loadingMessage);
-
     console.log('✅ PDF generado exitosamente');
   } catch (error) {
     console.error('❌ Error al generar PDF:', error);
-    alert('Error al generar el PDF. Por favor, intenta nuevamente.');
+  }
+}
+
+/**
+ * Función interna para exportar el menú a PDF
+ * Accesible desde la consola del navegador como: window.exportMenuPDF()
+ */
+export async function exportMenuPDF() {
+  // Buscar el contenedor del menú por ID
+  const menuContent = document.getElementById('menu-content');
+  
+  if (!menuContent) {
+    console.error('❌ No se encontró el contenedor del menú. Asegúrate de estar en la página del menú.');
+    return;
+  }
+
+  console.log('🔄 Iniciando exportación del menú a PDF...');
+
+  // Crear un ID temporal para el PDF
+  const tempId = 'menu-pdf-export-temp';
+  const existingElement = document.getElementById(tempId);
+  if (existingElement) {
+    existingElement.remove();
+  }
+
+  // Clonar el contenido del menú
+  const clonedContent = menuContent.cloneNode(true) as HTMLElement;
+  clonedContent.id = tempId;
+  
+  // Crear un contenedor oculto para el PDF
+  const pdfContainer = document.createElement('div');
+  pdfContainer.style.cssText = `
+    position: fixed;
+    left: -9999px;
+    top: 0;
+    width: 800px;
+    background: white;
+    padding: 40px;
+    z-index: -1;
+  `;
+  
+  // Aplicar estilos para PDF (fondo blanco, texto negro)
+  clonedContent.style.cssText = `
+    background: white !important;
+    color: #000000 !important;
+    width: 100% !important;
+  `;
+  
+  // Convertir todos los textos a negro
+  const allTextElements = clonedContent.querySelectorAll('*');
+  allTextElements.forEach((el) => {
+    const htmlEl = el as HTMLElement;
+    if (htmlEl.style) {
+      htmlEl.style.color = '#000000';
+    }
+  });
+  
+  pdfContainer.appendChild(clonedContent);
+  document.body.appendChild(pdfContainer);
+  
+  // Esperar a que las imágenes se carguen
+  const images = clonedContent.querySelectorAll('img');
+  const imagePromises = Array.from(images).map((img) => {
+    return new Promise<void>((resolve) => {
+      if (img.complete && img.naturalHeight !== 0) {
+        resolve();
+      } else {
+        img.onload = () => resolve();
+        img.onerror = () => resolve();
+        // Timeout de seguridad
+        setTimeout(() => resolve(), 2000);
+      }
+    });
+  });
+
+  await Promise.all(imagePromises);
+  
+  // Esperar un momento adicional para que se renderice completamente
+  await new Promise(resolve => setTimeout(resolve, 300));
+  
+  try {
+    await exportToPDF(tempId, 'menu-mar-y-fuego', {
+      format: [210, 297], // A4
+      orientation: 'portrait',
+      scale: 2,
+      quality: 1.0,
+    });
+    
+    // Limpiar el contenedor temporal
+    pdfContainer.remove();
+    console.log('✅ PDF generado exitosamente');
+  } catch (error) {
+    pdfContainer.remove();
+    console.error('❌ Error al generar PDF:', error);
   }
 }
 
