@@ -109,82 +109,155 @@ button div[aria-hidden] {
 
 /* Estilos para impresión */
 @media print {
-  /* Asegurar que los fondos se impriman */
+  /* Forzar que todos los elementos sean visibles */
   * {
+    visibility: visible !important;
+    opacity: 1 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     color-adjust: exact !important;
   }
 
-  /* Convertir fondos oscuros a blancos para mejor legibilidad */
+  /* Convertir todos los fondos oscuros a blancos */
+  html,
   body,
+  .main,
+  .inner,
   .inner .page,
   .inner .slide,
   [class*="bg-background"],
   [class*="bg-black"],
-  [class*="bg-\[#0a0b0a\]"] {
+  [class*="bg-\[#0a0b0a\]"],
+  div[class*="bg-"],
+  section[class*="bg-"] {
     background-color: white !important;
     background: white !important;
+    background-image: none !important;
   }
 
-  /* Asegurar que el texto sea visible (negro sobre blanco) */
+  /* Asegurar que todo el texto sea negro y visible */
+  *,
   body,
-  [class*="text-\[#efe7d2\]"],
-  [class*="text-text"],
-  p, h1, h2, h3, h4, h5, h6, span, div {
+  [class*="text-"],
+  p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th {
     color: #000000 !important;
   }
 
-  /* Convertir elementos fixed a relative para impresión */
+  /* Convertir todos los elementos posicionados a relative */
   .inner .slide,
   [style*="position: fixed"],
-  [class*="fixed"] {
+  [style*="position: absolute"],
+  [class*="fixed"],
+  [class*="absolute"] {
     position: relative !important;
     left: auto !important;
     top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
   }
 
-  /* Asegurar que todos los elementos sean visibles */
-  * {
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  /* Ajustar alturas para impresión */
+  /* Ajustar todas las alturas y overflow */
+  html,
+  body,
   .main,
   .inner,
   .inner .page,
-  .inner .slide {
+  .inner .slide,
+  div,
+  section {
     height: auto !important;
     min-height: auto !important;
+    max-height: none !important;
     overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
   }
 
-  /* Evitar saltos de página innecesarios */
-  .inner .page,
-  .inner .slide {
-    page-break-inside: avoid;
-  }
-
-  /* Ocultar elementos que no deben imprimirse */
-  button,
-  [class*="hidden"],
-  nav,
-  [role="navigation"] {
-    display: none !important;
-  }
-
-  /* Asegurar que las imágenes se impriman */
-  img {
+  /* Asegurar que las imágenes y videos sean visibles */
+  img,
+  video,
+  picture,
+  source {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     max-width: 100% !important;
     height: auto !important;
     page-break-inside: avoid;
   }
 
-  /* Ajustar contenedores para impresión */
-  [class*="overflow-hidden"],
-  [class*="overflow-x-hidden"] {
-    overflow: visible !important;
+  /* Forzar que los componentes lazy loading muestren contenido */
+  [class*="Lazy"],
+  [class*="lazy"],
+  [class*="opacity-0"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Mostrar contenido que podría estar oculto */
+  [class*="hidden"]:not([class*="print-visible"]) {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* Ocultar solo elementos interactivos */
+  button:not([class*="print-visible"]),
+  [role="button"]:not([class*="print-visible"]),
+  a[href^="#"]:not([class*="print-visible"]),
+  nav:not([class*="print-visible"]),
+  [role="navigation"]:not([class*="print-visible"]) {
+    display: none !important;
+  }
+
+  /* Asegurar que los gradientes y overlays no oculten contenido */
+  [class*="gradient"],
+  [class*="overlay"],
+  [class*="blur"] {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+  }
+
+  /* Ajustar contenedores flex y grid para impresión - mantener estructura pero hacer visible */
+  [class*="flex"] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  [class*="grid"] {
+    display: grid !important;
+  }
+
+  /* Asegurar que el contenido principal sea visible */
+  [data-name],
+  [class*="wrapper"],
+  [class*="container"],
+  [class*="content"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+  }
+
+  /* Evitar saltos de página innecesarios */
+  .inner .page,
+  .inner .slide,
+  img,
+  video {
+    page-break-inside: avoid;
+  }
+
+  /* Asegurar que los videos muestren un fallback */
+  video {
+    display: block !important;
+  }
+
+  video::after {
+    content: "[Video: " attr(src) "]";
+    display: block;
+    padding: 10px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
   }
 }
 

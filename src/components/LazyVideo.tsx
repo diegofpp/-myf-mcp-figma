@@ -14,33 +14,59 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
   ...props
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(priority); // Si es prioridad, cargar inmediatamente
+  // En modo impresión, siempre mostrar el contenido
+  const isPrintMode = typeof window !== 'undefined' && window.matchMedia('print').matches;
+  const [isInView, setIsInView] = useState(priority || isPrintMode); // Si es prioridad o impresión, cargar inmediatamente
   const [hasError, setHasError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (priority) return; // Si es prioridad, no usar intersection observer
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry?.isIntersecting) {
+    // En modo impresión, siempre mostrar
+    if (typeof window !== 'undefined') {
+      const mediaQuery = window.matchMedia('print');
+      const handlePrintChange = (e: MediaQueryList | MediaQueryListEvent) => {
+        if (e.matches) {
           setIsInView(true);
-          observer.disconnect();
+          setIsLoaded(true);
         }
-      },
-      { 
-        threshold: 0.1,
-        rootMargin: '50px' // Cargar 50px antes de que sea visible
+      };
+      
+      // Verificar si ya está en modo impresión
+      if (mediaQuery.matches) {
+        setIsInView(true);
+        setIsLoaded(true);
       }
-    );
+      
+      mediaQuery.addEventListener('change', handlePrintChange);
+      
+      if (priority) {
+        return () => mediaQuery.removeEventListener('change', handlePrintChange);
+      }
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (entry?.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        },
+        { 
+          threshold: 0.1,
+          rootMargin: '50px' // Cargar 50px antes de que sea visible
+        }
+      );
+
+      if (containerRef.current) {
+        observer.observe(containerRef.current);
+      }
+
+      return () => {
+        observer.disconnect();
+        mediaQuery.removeEventListener('change', handlePrintChange);
+      };
     }
-
-    return () => observer.disconnect();
   }, [priority]);
 
   const handleLoadedData = () => {
