@@ -23,8 +23,9 @@ const LazyVideo: React.FC<LazyVideoProps> = ({
     if (priority) return; // Si es prioridad, no usar intersection observer
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
+      (entries) => {
+        const entry = entries[0];
+        if (entry?.isIntersecting) {
           setIsInView(true);
           observer.disconnect();
         }
