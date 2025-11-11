@@ -85,6 +85,7 @@ export async function exportToPDF(
 /**
  * Función interna para exportar el menú a PDF
  * Accesible desde la consola del navegador como: window.exportMenuPDF()
+ * Mantiene los estilos originales del menú (fondo oscuro, texto claro)
  */
 export async function exportMenuPDF() {
   // Buscar el contenedor del menú por ID
@@ -104,35 +105,43 @@ export async function exportMenuPDF() {
     existingElement.remove();
   }
 
-  // Clonar el contenido del menú
+  // Clonar el contenido del menú con todos sus estilos
   const clonedContent = menuContent.cloneNode(true) as HTMLElement;
   clonedContent.id = tempId;
   
-  // Crear un contenedor oculto para el PDF
+  // Crear un contenedor oculto para el PDF con fondo oscuro
   const pdfContainer = document.createElement('div');
   pdfContainer.style.cssText = `
     position: fixed;
     left: -9999px;
     top: 0;
-    width: 800px;
-    background: white;
+    width: ${menuContent.offsetWidth || 800}px;
+    background: #0a0b0a;
     padding: 40px;
     z-index: -1;
   `;
   
-  // Aplicar estilos para PDF (fondo blanco, texto negro)
+  // Mantener los estilos originales del menú
   clonedContent.style.cssText = `
-    background: white !important;
-    color: #000000 !important;
+    background: #0a0b0a !important;
     width: 100% !important;
+    position: relative !important;
   `;
   
-  // Convertir todos los textos a negro
-  const allTextElements = clonedContent.querySelectorAll('*');
-  allTextElements.forEach((el) => {
+  // Asegurar que todos los elementos mantengan sus estilos originales
+  // No modificar colores, solo asegurar que se rendericen correctamente
+  const allElements = clonedContent.querySelectorAll('*');
+  allElements.forEach((el) => {
     const htmlEl = el as HTMLElement;
+    // Forzar que los elementos sean visibles pero mantener sus estilos
     if (htmlEl.style) {
-      htmlEl.style.color = '#000000';
+      // No cambiar colores, solo asegurar visibilidad
+      if (htmlEl.style.opacity === '0') {
+        htmlEl.style.opacity = '1';
+      }
+      if (htmlEl.style.visibility === 'hidden') {
+        htmlEl.style.visibility = 'visible';
+      }
     }
   });
   
@@ -157,19 +166,72 @@ export async function exportMenuPDF() {
   await Promise.all(imagePromises);
   
   // Esperar un momento adicional para que se renderice completamente
-  await new Promise(resolve => setTimeout(resolve, 300));
+  await new Promise(resolve => setTimeout(resolve, 500));
   
   try {
-    await exportToPDF(tempId, 'menu-mar-y-fuego', {
-      format: [210, 297], // A4
-      orientation: 'portrait',
+    // Exportar con fondo oscuro
+    const element = document.getElementById(tempId);
+    if (!element) {
+      throw new Error('Elemento no encontrado');
+    }
+
+    console.log('🔄 Capturando contenido con estilos originales...');
+    
+    // Configuración de html2canvas con fondo oscuro
+    const canvas = await html2canvas(element, {
       scale: 2,
-      quality: 1.0,
+      useCORS: true,
+      logging: false,
+      backgroundColor: '#0a0b0a', // Fondo oscuro original
+      width: element.scrollWidth,
+      height: element.scrollHeight,
+      windowWidth: element.scrollWidth,
+      windowHeight: element.scrollHeight,
     });
+
+    // Calcular dimensiones del PDF
+    const imgWidth = canvas.width;
+    const imgHeight = canvas.height;
+    
+    // Formato A4
+    const pdfWidth = 210; // A4 width en mm
+    const pdfHeight = 297; // A4 height en mm
+    
+    // Calcular dimensiones manteniendo proporción
+    const ratio = Math.min(pdfWidth / (imgWidth * 0.264583), pdfHeight / (imgHeight * 0.264583));
+    const finalWidth = imgWidth * 0.264583 * ratio;
+    const finalHeight = imgHeight * 0.264583 * ratio;
+
+    // Crear PDF
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: [pdfWidth, pdfHeight],
+    });
+
+    // Si el contenido es más alto que una página, dividirlo en múltiples páginas
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    let heightLeft = finalHeight;
+    let position = 0;
+
+    // Agregar primera página
+    pdf.addImage(canvas.toDataURL('image/png', 1.0), 'PNG', 0, position, finalWidth, finalHeight);
+    heightLeft -= pageHeight;
+
+    // Agregar páginas adicionales si es necesario
+    while (heightLeft > 0) {
+      position = heightLeft - finalHeight;
+      pdf.addPage();
+      pdf.addImage(canvas.toDataURL('image/png', 1.0), 'PNG', 0, position, finalWidth, finalHeight);
+      heightLeft -= pageHeight;
+    }
+
+    // Guardar PDF
+    pdf.save('menu-mar-y-fuego.pdf');
     
     // Limpiar el contenedor temporal
     pdfContainer.remove();
-    console.log('✅ PDF generado exitosamente');
+    console.log('✅ PDF generado exitosamente con estilos originales');
   } catch (error) {
     pdfContainer.remove();
     console.error('❌ Error al generar PDF:', error);
