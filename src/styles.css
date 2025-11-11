@@ -107,4 +107,85 @@ button div[aria-hidden] {
   }
 }
 
+/* Estilos para impresión */
+@media print {
+  /* Asegurar que los fondos se impriman */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Convertir fondos oscuros a blancos para mejor legibilidad */
+  body,
+  .inner .page,
+  .inner .slide,
+  [class*="bg-background"],
+  [class*="bg-black"],
+  [class*="bg-\[#0a0b0a\]"] {
+    background-color: white !important;
+    background: white !important;
+  }
+
+  /* Asegurar que el texto sea visible (negro sobre blanco) */
+  body,
+  [class*="text-\[#efe7d2\]"],
+  [class*="text-text"],
+  p, h1, h2, h3, h4, h5, h6, span, div {
+    color: #000000 !important;
+  }
+
+  /* Convertir elementos fixed a relative para impresión */
+  .inner .slide,
+  [style*="position: fixed"],
+  [class*="fixed"] {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  /* Asegurar que todos los elementos sean visibles */
+  * {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Ajustar alturas para impresión */
+  .main,
+  .inner,
+  .inner .page,
+  .inner .slide {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Evitar saltos de página innecesarios */
+  .inner .page,
+  .inner .slide {
+    page-break-inside: avoid;
+  }
+
+  /* Ocultar elementos que no deben imprimirse */
+  button,
+  [class*="hidden"],
+  nav,
+  [role="navigation"] {
+    display: none !important;
+  }
+
+  /* Asegurar que las imágenes se impriman */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+  }
+
+  /* Ajustar contenedores para impresión */
+  [class*="overflow-hidden"],
+  [class*="overflow-x-hidden"] {
+    overflow: visible !important;
+  }
+}
+
 
